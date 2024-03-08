@@ -10,9 +10,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", identifyRoutes);
-app.use("/", (req, res) => {
-  return res.send("Hii");
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
