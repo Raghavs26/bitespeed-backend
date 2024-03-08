@@ -25,7 +25,7 @@ export const identify = async (req: Request, res: Response) => {
       createdAt: "asc",
     },
   });
-  // console.log(contact, "\n");
+
   // Check if the email and phone number are already in use
   const contactExists = contact.find(
     (c) => c.email === email && c.phoneNumber === phoneNumber
@@ -76,22 +76,22 @@ export const identify = async (req: Request, res: Response) => {
     secondaryContacts = null;
   }
 
-  const emails = [
+  // for only unique values
+  const uniqueEmails = new Set([
     primaryContact.email,
     ...(secondaryContacts?.map((c) => c.email) ?? []),
-  ];
-  const phoneNumbers = [
+  ]);
+  const uniquePhoneNumbers = new Set([
     primaryContact.phoneNumber,
     ...(secondaryContacts?.map((c) => c.phoneNumber) ?? []),
-  ];
-  const secondaryContactIds = secondaryContacts?.map((c) => c.id) ?? [];
+  ]);
 
   return res.status(200).json({
     contact: {
       primaryContactId: primaryContact.id,
-      emails,
-      phoneNumbers,
-      secondaryContactIds,
+      emails: [...uniqueEmails],
+      phoneNumbers: [...uniquePhoneNumbers],
+      secondaryContactIds: secondaryContacts?.map((c) => c.id) ?? [],
     },
   });
 };
