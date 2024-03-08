@@ -12,17 +12,11 @@
      npm i
      ```
 
-   - Create a `.env` file in the `backend` folder with the following variables:
+   - Create a `.env` file:
 
      ```plaintext
      DATABASE_URL="postgresql://user:password@localhost:5432/dbname?schema=public"
      ```
-
-     Be sure to replace the placeholders (`MONGO_URI`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_KEY`, `CLOUDINARY_SECRET`, and `MAPBOX_TOKEN`) with your actual configuration values.
-
-     - `MONGO_URI` should be your MongoDB connection URI.
-     - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_KEY`, and `CLOUDINARY_SECRET` are for Cloudinary integration.
-     - `MAPBOX_TOKEN` is for Mapbox integration.
 
 ## Running the Server
 
@@ -34,4 +28,17 @@ npx ts-node index.ts
 
 ## Live Project
 
-- You can check out the deployed project by visiting [this link](https://yelp-camp-26.onrender.com/).
+- You can check out the deployed project by visiting [this link](https://bitespeed-backend-jr2o.onrender.com).
+
+## Sending Request
+
+- To send the API request, use Postman. Send a POST request to https://bitespeed-backend-jr2o.onrender.com/identity and select JSON. For example:
+
+  ```plaintext
+     {
+      "email":"abc@gmail.com",  
+      "phoneNumber": "123456789"
+     }
+  ```
+  
+
